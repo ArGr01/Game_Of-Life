@@ -1,0 +1,86 @@
+<html>
+   <head>
+   		<meta charset="utf8">	
+       	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+       	<script src="class.js"></script>
+        <script src="script.js"></script>
+        <style>
+                #legend {
+                position: absolute;
+                top: 10%;
+                right: 1%;
+                width: 45%;
+                } 
+                .legend-color {
+                width: 30px;
+                height: 30px;
+                } 
+                td {
+                border: 1px solid black; 
+                font-size: 14px; 
+                padding: 5px;
+                }
+        </style>
+   </head>
+   <body>
+        <table id="legend">
+                <tr>
+                    <td class="legend-color">Գույն</td>
+                    <td>Անվանում</td>
+                    <td>Շարժվում է</td>
+                    <td>Ուտում է</td>
+                    <td>Բազմանում է</td>
+                    <td>Սատկում է</td>
+                </tr>
+        
+                <tr>
+                    <td class="legend-color" style="background-color:gray"></td>
+                    <td>Դատարկ վանդակներ</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="legend-color" style="background-color:green"></td>
+                    <td>Խոտ</td>
+                    <td></td>
+                    <td></td>
+                    <td>Մոտակա 8 վանդակներում, 8 տակտը մեկ</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="legend-color" style="background-color:yellow"></td>
+                    <td>Խոտակեր</td>
+                    <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 1-ով</td>
+                    <td>Խոտերին, մոտակա 8 վանդակներում, շարժվելիս էներգիան ավելանում է 1-ով</td>
+                    <td>Բազմանում է մոտակա տարածքներում, երբ էներգիան 10-ից ավել է</td>
+                    <td>Սատկում է, երբ էներգիան փոքր է 0-ից</td>
+                </tr>
+                <tr>
+                    <td class="legend-color" style="background-color:red"></td>
+                    <td>Գիշատիչ</td>
+                    <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 2-ով</td>
+                    <td>Խոտակերներին, մոտակա 8 վանդակներում, շարժվելիս էներգիան ավելանում է 2-ով</td>
+                    <td>Բազմանում է մոտակա տարածքներում, երբ էներգիան 24-ից ավել է</td>
+                    <td>Սատկում է, երբ էներգիան փոքր է 0-ից</td>
+                </tr>
+                <tr>
+                    <td class="legend-color" style="background-color:black"></td>
+                    <td>Որսորդ</td>
+                    <td>Ուղղահայաց և հորիզոնական վանդակներով ամբողջ մատրիցի տարածքով, էներգիան քչանում է 3-ով</td>
+                    <td>Գիշատիչներին, ուղղահայաց և հորիզոնական վանդակներում, շարժվելիս էներգիան ավելանում է 3-ով</td>
+                    <td>Բազմանում է ուղղահայաց և հորիզոնական վանդակներում, երբ էներգիան 24-ից ավել է</td>
+                    <td>Սատկում է, երբ էներգիան փոքր է 0-ից</td>
+                </tr>
+                <tr>
+                    <td class="legend-color" style="background-color:#00D4FF"></td>
+                    <td>Հրեշտակ</td>
+                    <td>Անկյունագծերով ամբողջ մատրիցի տարածքով, քայլում է նաև խոտերի վրայով, էներգիան քչանում է 1-ով</td>
+                    <td>Գիշատիչներին,Որսորդներին, անկյունագծերով, շարժվելիս էներգիան ավելանում է 1-ով</td>
+                    <td>Բազմանում է անյունագծերով, երբ էներգիան 22-ից ավել է</td>
+                    <td>Սատկում է, երբ էներգիան փոքր է 0-ից</td>
+                </tr>
+            </table>
+   </body>
+</html>
