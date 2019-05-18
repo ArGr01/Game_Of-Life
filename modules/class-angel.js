@@ -1,4 +1,7 @@
-class Angel extends LivingCreature{
+var LivingCreature = require("./super-class");
+var random = require("./random");
+
+module.exports = class Angel extends LivingCreature{
     constructor(x,y,index) {
         super(x,y,index);
         this.energy = 15;

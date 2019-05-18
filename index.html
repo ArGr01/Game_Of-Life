@@ -2,12 +2,15 @@
    <head>
    		<meta charset="utf8">	
        	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+        <!--
         <script src="super-class.js"></script>
        	<script src="class-grass.js"></script>
         <script src="class-grasseater.js"></script>
         <script src="class-gishatich.js"></script>
         <script src="class-vorsord.js"></script>
         <script src="class-angel.js"></script>
+        -->
+        <script src="/socket.io/socket.io.js"></script>
         <script src="script.js"></script>
         <style>
                 #legend {
@@ -25,9 +28,45 @@
                 font-size: 14px; 
                 padding: 5px;
                 }
+                ul{
+                    list-style-type: circle;
+                }
+                li{
+                    margin-top: 10px;
+                }
+                button{
+                    border-radius: 10px;
+                    padding: 10px 15px;
+                    color: white;
+                    border: none;
+                    text-align: center;
+                    text-decoration: none;
+                    font-size: 14px;
+                }
+                button:hover{
+                    cursor: pointer;
+                }
+                #gishatich{ background-color: #f44336; }
+                #vorsord{ background-color: #555555; }
+                #kaycak{ background-color: #e7e7e7; color: black; }
+                #angel{ background-color: #00D4FF; }
         </style>
    </head>
    <body>
+        <ul>
+            <li>
+                <button id="gishatich" onclick="PushGishatich()">Ավելացնել գիշատիչներ</button>
+            </li>
+            <li>
+                <button id="vorsord" onclick="ChangeVorsord()">Որսորդներին դարձնել գիշատիչներ</button>
+            </li>
+            <li>
+                <button id="kaycak" onclick="Lighting()">Կայծակ</button>
+            </li>
+            <li>
+                <button id="angel" onclick="KillAngels()">Սպանել հրեշտակներին</button>
+            </li>
+        </ul>
         <table id="legend">
                 <tr>
                     <td class="legend-color">Գույն</td>
