@@ -3,11 +3,13 @@ var socket = io();
 function setup() {
     var side = 30;
     var matrix = [];
+    var getseason;
 
     socket.on("data",draw);
 
     function draw(data) {
         matrix = data.matrix;
+        getseason = data.sendseason;
         createCanvas(matrix[0].length * side, matrix.length * side)
         background("#acacac");
         noStroke();
@@ -16,7 +18,12 @@ function setup() {
             for (var x = 0; x < matrix[y].length; x++) {
                 
                 if (matrix[y][x] == 1) {
-                    fill("green");
+                    if(getseason == "spring"){
+                        fill("green");
+                    }
+                    else if(getseason == "winter"){
+                        fill("white"); 
+                    } 
                 }
                 else if(matrix[y][x] == 0){
                     fill("#acacac");

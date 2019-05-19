@@ -44,7 +44,7 @@ module.exports = class GrassEater extends LivingCreature {
         }
     }
 
-    eat(){
+    eat(k){
         var newCell = random(this.chooseCell(1));
         if(newCell){
             matrix[newCell[1]][newCell[0]] = 2;
@@ -59,7 +59,7 @@ module.exports = class GrassEater extends LivingCreature {
                     break;
                 }
             }
-            if(this.multiply >= 5){ 
+            if(this.multiply >= k){ 
                 this.mul();
                 this.multiply = 0;  
             }    

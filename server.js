@@ -202,16 +202,41 @@ io.on("connection",function(socket){
     })
 });
 
+var changeseason = 0;
+var season;
+
 // Start Game, Call Methods
 function Game(){
+    changeseason++;
+    if(changeseason < 20){
+        season = "spring";
+    }
+    else if(changeseason >= 20 && changeseason <= 39){
+        season = "winter";
+    }
+    else{
+        changeseason = 0;
+
+    }
+
 	if (grassArr[0] !== undefined) {
         for (var i in grassArr) {
-            grassArr[i].mul();
+            if(season == "spring"){
+                grassArr[i].mul(3);
+            }
+            else if(season == "winter"){
+                grassArr[i].mul(10);
+            }
         }
     }
     if (grassEaterArr[0] !== undefined) {
         for (var i in grassEaterArr) {
-            grassEaterArr[i].eat();
+            if(season == "spring"){
+                grassEaterArr[i].eat(4);
+            }
+            else if(season == "winter"){
+                grassEaterArr[i].eat(7);
+            }
         }
     }
     if (gishatichArr[0] !== undefined) {
@@ -309,7 +334,8 @@ function Game(){
     
     // Object to send
     let sendData = {
-        matrix: matrix
+        matrix: matrix,
+        sendseason: season
     }
 
     //! Send data over the socket to clients who listens "data"
@@ -317,4 +343,4 @@ function Game(){
 
 }
 
-setInterval(Game, 500); 
+setInterval(Game, 500);
