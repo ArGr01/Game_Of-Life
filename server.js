@@ -200,6 +200,59 @@ io.on("connection",function(socket){
             }
         }
     })
+    socket.on("boom",function(){
+        let randx = Math.floor(random(30));
+        let randy = Math.floor(random(30));
+        for(var y = 0; y < 30; y++){
+            for(var x  =0; x < 30; x++){
+                if(((y==randy || y==randy-1 || y==randy+1) && (x==randx-1 || x==randx-2 || x==randx-3 || x==randx+1 || x==randx+2 || x==randx+3)) || ((x==randx || x==randx-1 || x==randx+1) && (y==randy-1 || y==randy-2 || y==randy-3 || y==randy+1 || y==randy+2 || y==randy+3)) || ((y==randy-2 || y==randy+2) && (x==randx-2 || x==randx+2)) || ((y==randy-3 || y==randy+3) && (x==randx-3 || x==randx+3)) || ((y==randy-4 || y==randy+4) && (x==randx-4 || x==randx+4))){
+                    if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length){
+                        if(matrix[y][x] == 1){
+                            for(var i in grassArr){
+                                if(x  == grassArr[i].x && y == grassArr[i].y){
+                                    grassArr.splice(i,1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if(matrix[y][x] == 2){
+                            for(var i in grassEaterArr){
+                                if(x  == grassEaterArr[i].x && y == grassEaterArr[i].y){
+                                    grassEaterArr.splice(i,1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if(matrix[y][x] == 3){
+                            for(var i in gishatichArr){
+                                if(x  == gishatichArr[i].x && y == gishatichArr[i].y){
+                                    gishatichArr.splice(i,1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if(matrix[y][x] == 4){
+                            for(var i in vorsordArr){
+                                if(x  == vorsordArr[i].x && y == vorsordArr[i].y){
+                                    vorsordArr.splice(i,1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if(matrix[y][x] == 5){
+                            for(var i in angelArr){
+                                if(x  == angelArr[i].x && y == angelArr[i].y){
+                                    angelArr.splice(i,1);
+                                    break;
+                                }
+                            }
+                        }
+                        matrix[y][x] = 7;
+                    }
+                }
+            }
+        }
+    })
 });
 
 var changeseason = 0;
@@ -208,40 +261,49 @@ var season;
 // Start Game, Call Methods
 function Game(){
     changeseason++;
-    if(changeseason < 20){
+    if(changeseason < 20)
         season = "spring";
-    }
-    else if(changeseason >= 20 && changeseason <= 39){
+    else if(changeseason >= 20 && changeseason < 40)
+        season = "summer";
+    else if(changeseason >= 40 && changeseason < 60)
+        season = "automn";
+    else if(changeseason >= 60 && changeseason < 80)
         season = "winter";
-    }
-    else{
+    else
         changeseason = 0;
-
-    }
 
 	if (grassArr[0] !== undefined) {
         for (var i in grassArr) {
-            if(season == "spring"){
+            if(season == "spring")
                 grassArr[i].mul(3);
-            }
-            else if(season == "winter"){
+            else if(season == "summer")
+                grassArr[i].mul(6);
+            else if(season == "automn")
                 grassArr[i].mul(10);
-            }
         }
     }
     if (grassEaterArr[0] !== undefined) {
         for (var i in grassEaterArr) {
-            if(season == "spring"){
+            if(season == "spring")
                 grassEaterArr[i].eat(4);
-            }
-            else if(season == "winter"){
+            else if(season == "summer")
                 grassEaterArr[i].eat(7);
-            }
+            else if(season == "automn")
+                grassEaterArr[i].eat(11);
+            else if(season == "winter")
+                grassEaterArr[i].eat(50);
         }
     }
     if (gishatichArr[0] !== undefined) {
         for (var i in gishatichArr) {
-            gishatichArr[i].eat();
+            if(season == "spring")
+                gishatichArr[i].eat(1);
+            else if(season == "summer")
+                gishatichArr[i].eat(2);
+            else if(season == "automn")
+                gishatichArr[i].eat(3);
+            else if(season == "winter")
+                gishatichArr[i].eat(4);
         }
     }
     if (vorsordArr[0] !== undefined) {

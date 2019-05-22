@@ -25,7 +25,7 @@ module.exports = class Gishatich extends LivingCreature{
         return super.chooseCell(character);
     }
 
-    eat(){
+    eat(k){
         var newCell = random(this.chooseCell(2));
         if(newCell){
             matrix[newCell[1]][newCell[0]] = 3;
@@ -40,7 +40,7 @@ module.exports = class Gishatich extends LivingCreature{
                     break;
                 }
             }
-            if(this.multiply >= 2){
+            if(this.multiply >= k){
                 this.mul();
                 this.multiply = 0;
             }    
