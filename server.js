@@ -73,6 +73,7 @@ var Vorsord = require("./modules/class-vorsord.js");
 var Angel = require("./modules/class-angel.js");
 
 // Server STUFF
+var fs = require('fs');
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
@@ -406,3 +407,13 @@ function Game(){
 }
 
 setInterval(Game, 500);
+
+var statistics = {};
+setInterval(function(){
+    statistics.grassArr = grassArr.length;
+    statistics.grassEaterArr = grassEaterArr.length;
+    statistics.gishatichArr = gishatichArr.length;
+    statistics.vorsordArr = vorsordArr.length;
+    statistics.angelArr = angelArr.length;
+    fs.writeFileSync("statistics.json", JSON.stringify(statistics));
+},10)
